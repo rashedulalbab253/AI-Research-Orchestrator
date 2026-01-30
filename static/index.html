@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Agent Research Assistant | PhD-Level AI Research</title>
+    <meta name="description"
+        content="Advanced multi-agent research automation powered by CrewAI. Execute systematic literature reviews with PhD-level rigor.">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background Effects -->
+    <div class="background-gradient"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">🔬</div>
+                <h1 class="nav-title">MARA Framework</h1>
+                <span class="nav-subtitle">Multi-Agent Research Assistant</span>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-secondary" id="apiStatusBtn">
+                    <span class="status-indicator" id="apiStatusIndicator"></span>
+                    API Status
+                </button>
+                <button class="btn-secondary" id="viewDocsBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    API Docs
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-badge">
+                    <span class="badge-pulse"></span>
+                    PhD-Level Research Automation
+                </div>
+                <h2 class="hero-title">
+                    Systematic Literature Review
+                    <span class="gradient-text">Powered by AI Agents</span>
+                </h2>
+                <p class="hero-description">
+                    Execute publication-grade research with our multi-agent system. Three specialist AI agents
+                    collaborate to deliver comprehensive, evidence-based reports with academic rigor.
+                </p>
+            </section>
+
+            <!-- Research Input Section -->
+            <section class="research-section">
+                <div class="card research-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            Research Topic
+                        </h3>
+                        <p class="card-subtitle">Enter your research question or topic for systematic analysis</p>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea id="researchTopic" class="research-input"
+                            placeholder="e.g., Quantum Computing Applications in Drug Discovery, AI Ethics in Healthcare, Climate Change Mitigation Strategies..."
+                            rows="3"></textarea>
+                        <div class="input-meta">
+                            <span class="char-count" id="charCount">0 / 500</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary btn-large" id="startResearchBtn">
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span class="btn-text">Initiate Research Protocol</span>
+                        <div class="btn-shine"></div>
+                    </button>
+                </div>
+
+                <!-- Agent Status Cards -->
+                <div class="agents-grid" id="agentsGrid" style="display: none;">
+                    <div class="agent-card" id="agent1">
+                        <div class="agent-icon">🔍</div>
+                        <h4 class="agent-name">Research Specialist</h4>
+                        <p class="agent-role">Systematic Literature Review</p>
+                        <div class="agent-status">
+                            <span class="status-badge status-idle">Idle</span>
+                        </div>
+                    </div>
+                    <div class="agent-card" id="agent2">
+                        <div class="agent-icon">📊</div>
+                        <h4 class="agent-name">Data Analyst</h4>
+                        <p class="agent-role">Meta-Analysis & Synthesis</p>
+                        <div class="agent-status">
+                            <span class="status-badge status-idle">Idle</span>
+                        </div>
+                    </div>
+                    <div class="agent-card" id="agent3">
+                        <div class="agent-icon">✍️</div>
+                        <h4 class="agent-name">Technical Writer</h4>
+                        <p class="agent-role">Publication-Ready Manuscripts</p>
+                        <div class="agent-status">
+                            <span class="status-badge status-idle">Idle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="card progress-card">
+                        <div class="progress-header">
+                            <h3 class="progress-title">Research in Progress</h3>
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <div class="progress-status" id="progressStatus">
+                            Initializing research protocol...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="card results-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                Research Outputs
+                            </h3>
+                            <div class="success-badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Completed
+                            </div>
+                        </div>
+
+                        <div class="results-grid">
+                            <div class="result-item" data-file="research_findings.md">
+                                <div class="result-icon">📄</div>
+                                <div class="result-info">
+                                    <h4 class="result-title">Research Findings</h4>
+                                    <p class="result-description">Systematic literature review with empirical evidence
+                                    </p>
+                                </div>
+                                <button class="btn-download" onclick="downloadFile('research_findings.md')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Download
+                                </button>
+                            </div>
+
+                            <div class="result-item" data-file="analysis_report.md">
+                                <div class="result-icon">📊</div>
+                                <div class="result-info">
+                                    <h4 class="result-title">Analysis Report</h4>
+                                    <p class="result-description">Meta-analytical synthesis with statistical validation
+                                    </p>
+                                </div>
+                                <button class="btn-download" onclick="downloadFile('analysis_report.md')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Download
+                                </button>
+                            </div>
+
+                            <div class="result-item" data-file="final_report.md">
+                                <div class="result-icon">📝</div>
+                                <div class="result-info">
+                                    <h4 class="result-title">Final Report</h4>
+                                    <p class="result-description">Publication-ready manuscript with IMRAD structure</p>
+                                </div>
+                                <button class="btn-download" onclick="downloadFile('final_report.md')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Archive Section -->
+            <section class="section" id="archiveSection" style="margin-top: 2rem;">
+                <h3 class="section-title">Manuscript Archive</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Generated Reports</h3>
+                        <button class="btn-secondary" onclick="loadArchive()"
+                            style="padding: 0.5rem 1rem; font-size: 0.8rem;">Refresh</button>
+                    </div>
+                    <div class="results-grid" id="archiveGrid">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <h3 class="section-title">Research Capabilities</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4 class="feature-title">Systematic Review</h4>
+                        <p class="feature-description">PRISMA-compliant methodology with source triangulation</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h4 class="feature-title">Statistical Analysis</h4>
+                        <p class="feature-description">Bayesian reasoning and meta-analytical techniques</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h4 class="feature-title">Publication-Grade</h4>
+                        <p class="feature-description">APA/IEEE standards with full bibliographic integrity</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4 class="feature-title">Real-time Updates</h4>
+                        <p class="feature-description">WebSocket-powered progress tracking</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Built with <span class="gradient-text">CrewAI</span> • FastAPI • Modern Web Standards
+            </p>
+            <p class="footer-credits">
+                Multi-Agent Research Assistant Framework v1.0.0
+            </p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

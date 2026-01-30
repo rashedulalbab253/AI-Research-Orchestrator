@@ -1,0 +1,11 @@
+# Core AI Framework
+crewai
+crewai-tools
+python-dotenv
+litellm
+
+# Web Framework (FastAPI Backend)
+fastapi
+uvicorn[standard]
+websockets
+pydantic
