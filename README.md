@@ -48,6 +48,32 @@ Visit **http://localhost:8000** to start your systematic research.
 
 ---
 
+## 🐳 Docker Support
+
+You can also run the MARA Framework using Docker for a consistent, containerized environment.
+
+### 1. Using Docker Compose (Recommended)
+This will automatically build the image and start the container with your `.env` file configurations.
+
+```bash
+docker-compose up --build
+```
+
+### 2. Using Docker Build
+If you prefer to build and run the image manually:
+
+```bash
+# Build the image
+docker build -t mara-framework .
+
+# Run the container
+docker run -p 8000:8000 --env-file .env mara-framework
+```
+
+Visit **http://localhost:8000** to access the application.
+
+---
+
 ## 🕵️ AI Agent Squad
 
 1. **🔍 Lead Research Methodologist**: Executes high-fidelity data acquisition and empirical validation.
