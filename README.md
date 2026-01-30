@@ -74,6 +74,19 @@ Visit **http://localhost:8000** to access the application.
 
 ---
 
+## 🚀 CI/CD with GitHub Actions
+
+This project includes a GitHub Action workflow to automatically build and push the Docker image to Docker Hub whenever you push to `main` or `master`.
+
+### Setup Instructions:
+1.  **Docker Hub**: Ensure you have an account at [hub.docker.com](https://hub.docker.com).
+2.  **GitHub Secrets**: In your GitHub repository, go to **Settings > Secrets and variables > Actions** and add the following:
+    -   `DOCKERHUB_USERNAME`: `rashedulalbab1234`
+    -   `DOCKERHUB_TOKEN`: Your Docker Hub Personal Access Token (PAT).
+3.  **Push**: Once configured, every push to the repository will trigger a build and push to `rashedulalbab1234/ai-research-orchestrator`.
+
+---
+
 ## 🕵️ AI Agent Squad
 
 1. **🔍 Lead Research Methodologist**: Executes high-fidelity data acquisition and empirical validation.
